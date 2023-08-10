@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;1,900&family=Open+Sans:wght@300&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+.priorities {
+  width: 50%;   
+  margin: auto;
+}
+
+.about {  
+  margin: auto;
+  background-image: linear-gradient(to right, #00b09b, #96c93d);
+  height: 100%;  
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 100%;
+}
+
+
+.our-abilities-images {
+  height: 100%;
+  width: 200px;
+  clip-path: circle();
+}
+
+.abilities-images li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.abilities-images span {
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+.abilities {
+  /* margin: auto; */
+  /* max-width: 50%;  */
+}
+
+.abilities-images {
+ /* flex-direction: row;
+ justify-content: center;
+ align-items: center; */
+ /* margin: "25px 0";
+                display: "grid";
+                grid-template-columns: "1fr 1fr";
+                align-items: "center";
+                justify-items: "center";
+                gap: "10px"; */
+}
+
+#light {
+  background-color: #f3ebf6;
+}
+
+
+.switch {
+  display: flex;
+  width: 100vw;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+#light .switch label {
+  color: black;
+}
+
+#dark .switch label {
+  color: white;
+}
+body {
+  font-family: 'Merriweather', serif;
+}
+
+.container {
+  max-width: 80%;
+  margin: auto;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul {
+  list-style: none;
+}
+ 
+
+
