@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import {useTranslation} from "react-i18next";
 import Typography from "@mui/material/Typography";
+import { NavLink } from "react-router-dom";
 
 
 const FlagWrapper = styled.div`
@@ -53,7 +54,7 @@ export default function ProminentAppBar() {
                 </div>
             </div>
             <div>
-                <a href="/">
+                <NavLink to="/">
                     <img
                         src="/assets/logo.png"
                         alt=""
@@ -62,7 +63,7 @@ export default function ProminentAppBar() {
                             height: "100px",
                         }}
                     />
-                </a>
+                </NavLink>
             </div>
         </div>
     );

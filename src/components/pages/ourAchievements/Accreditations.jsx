@@ -82,7 +82,15 @@ const Accreditations = () => {
               }),
             }}
           />
-        </div>
+          <br/>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: t("aboutAdaptionEpiu", {
+                interpolation: { escapeValue: false },
+              }),
+            }}
+          />
+          </div>
       </div>
     </Container>
   );

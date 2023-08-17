@@ -4,43 +4,6 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import emailjs from "@emailjs/browser";
 
-const FormStyles = styled.div`
-  width: 100%;
-  .form-group {
-    width: 100%;
-    margin-bottom: 2rem;
-  }
-  label {
-    font-size: 1rem;
-  }
-  input,
-  textarea {
-    width: 100%;
-    font-size: 1rem;
-    padding: 1.2rem;
-    background-color: gray;
-    outline: none;
-    border: none;
-    border-radius: 4px;
-    margin-top: 1rem;
-  }
-  textarea {
-    min-height: 250px;
-    resize: vertical;
-  }
-  button[type="submit"] {
-    background-color: gray;
-    color: var(--black);
-    font-size: 1rem;
-    display: inline-block;
-    outline: none;
-    border: none;
-    padding: 1rem 0.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-`;
-
 export default function ContactForm() {
   const { t, i18n } = useTranslation();
   const [senderName, setSenderName] = useState("");
@@ -84,10 +47,11 @@ export default function ContactForm() {
         <FormStyles>
           <div className="form-group">
             <label htmlFor="name">
-              {t("placeholderName")}
+              {t("contactName")}
               <input
                 type="text"
                 id="senderName"
+                placeholder={t("placeholderName")}
                 name="senderName"
                 value={senderName}
                 onChange={handleName}
@@ -97,9 +61,10 @@ export default function ContactForm() {
           </div>
           <div className="form-group">
             <label htmlFor="email">
-              {t("placeholderEmail")}
+              {t("contactEmail")}
               <input
                 type="email"
+                placeholder={t("placeholderEmail")}
                 name="senderEmail"
                 value={senderEmail}
                 onChange={handleEmail}
@@ -108,9 +73,10 @@ export default function ContactForm() {
           </div>
           <div className="form-group">
             <label htmlFor="message">
-              {t("placeholderMessage")}
+              {t("contactMessage")}
               <textarea
                 name="message"
+                placeholder={t("placeholderMessage")}
                 value={message}
                 onChange={handleMessage}
               />
@@ -122,3 +88,50 @@ export default function ContactForm() {
     </div>
   );
 }
+
+const FormStyles = styled.div`
+  width: 100%;
+  .form-group {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  label {
+    font-size: 1rem;
+    color: rgb(19, 139, 67);
+    font-weight: bold;
+  }
+  input,
+  textarea {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0;
+    outline: none;
+    border: none;
+    margin-top: 0.5rem;
+    border-bottom: 2px solid rgb(19, 139, 67);
+  }
+  textarea {
+    min-height: 75px;
+    resize: vertical;
+  }
+  button[type="submit"] {
+    width: fit-content;
+    background-color: rgb(19, 139, 67);
+    color: white;
+    padding: 0.75rem 2rem;
+    margin: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1rem;
+    border: 2px solid white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  button[type="submit"]:hover {
+    background-color: white;
+    border: 2px solid rgb(19, 139, 67);
+    color: rgb(19, 139, 67);
+  }
+`;

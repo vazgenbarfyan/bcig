@@ -38,6 +38,7 @@ const CurrentProjects = () => {
                                         fontWeight: "bold",
                                         borderRadius: "3px",
                                         padding: "3px 5px",
+                                        marginRight: "7px",
                                     }}
                                 >
                                     <div>{t(`allCurrentProject.${item.key}.projectTag`)}</div>

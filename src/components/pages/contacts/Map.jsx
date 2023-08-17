@@ -25,7 +25,9 @@ class MapContainer extends Component {
                 }}
               >
                 <iframe
+                  title="google map"
                   style={{
+                    borderRadius: "0.75rem",
                     width: "80%",
                     height: "600px",
                   }}

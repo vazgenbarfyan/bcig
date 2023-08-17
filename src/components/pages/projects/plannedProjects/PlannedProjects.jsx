@@ -14,6 +14,10 @@ const PlannedProjects = () => {
       component={Paper}
       elevation={5}
       sx={{pt:3,pb:3}}
+      style={{
+        background: "rgb(90 254 156 / 14%)",
+        border: "1px solid #0080007d",
+      }}
     >
       <Box sx={{ width: "100%", maxWidth: "100%" }}>
         <Typography variant="h6" gutterBottom>
