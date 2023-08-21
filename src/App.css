@@ -106,5 +106,9 @@ ul {
 .menuItem:hover{
   color: rgb(60, 168, 71);
 }
-
+.loadingDiv{
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
 

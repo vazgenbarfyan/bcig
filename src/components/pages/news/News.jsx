@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import { BACKEND_URI } from "../../../index";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
+import ReactLoading from "react-loading";
 
 const NEWS_QUERY = gql`
   query GetNews($locale: I18NLocaleCode) {
@@ -46,7 +47,13 @@ const News = () => {
     },
   });
 
-  if (loading) return <div>Loading...</div>;
+  if (loading){
+    return (
+      <div className="loadingDiv">
+        <ReactLoading type="spinningBubbles" color="green" />
+      </div>
+    )
+  } 
 
   const newsData = data?.news?.data || [];
 

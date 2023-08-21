@@ -35,10 +35,6 @@ const AppRouter = () => {
     return (
         <Routes>
 
-            {/* {routes.map(({path, Component}) => {
-              return <Route path={path} component={Component} key={path} exact />
-            })} */}
-
             <Route path="/" element={<Main />} />
             
             <Route path="/about/">

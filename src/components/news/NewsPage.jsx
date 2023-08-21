@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ReactPaginate from "react-paginate";
+import ReactLoading from "react-loading";
 
 import NewsCard from "./NewsCard";
 import "./news.css";
@@ -57,25 +58,29 @@ const NewsPage = () => {
       </form>
       <div className="news-container">
         {isLoading ? (
-          <p>Loading...</p>
+          <div className="loadingDiv">
+            <ReactLoading type="spinningBubbles" color="green" />
+          </div>
         ) : (
-          articles.map((article) => (
-            <NewsCard article={article} key={article.objectID} />
-          ))
+          <>
+            {articles.map((article) => (
+              <NewsCard article={article} key={article.objectID} />
+            ))}
+            <ReactPaginate
+              nextLabel=">>"
+              previousLabel="<<"
+              breakLabel="..."
+              forcePage={currentPage}
+              pageCount={totalPages}
+              renderOnZeroPageCount={null}
+              onPageChange={handlePageChange}
+              className="pagination"
+              activeClassName="active-page"
+              previousClassName="previous-page"
+              nextClassName="next-page"
+            />
+          </>
         )}
-        <ReactPaginate
-          nextLabel=">>"
-          previousLabel="<<"
-          breakLabel="..."
-          forcePage={currentPage}
-          pageCount={totalPages}
-          renderOnZeroPageCount={null}
-          onPageChange={handlePageChange}
-          className="pagination"
-          activeClassName="active-page"
-          previousClassName="previous-page"
-          nextClassName="next-page"
-        />
       </div>
     </div>
   );

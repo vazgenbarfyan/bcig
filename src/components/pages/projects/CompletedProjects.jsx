@@ -22,7 +22,7 @@ export default function CompletedProjects() {
           return (
             <Accordion
               key={projectName}
-              style={{ marginBottom: 5, padding: "12px" }}
+              style={{ marginBottom: 5, padding: "12px", border: "1px solid #0080007d", backgroundColor: "rgb(90 254 156 / 14%)" }}
             >
               <Typography style={{ margin: "10" }}>{t(projectName)}</Typography>
             </Accordion>
