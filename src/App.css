@@ -6,6 +6,17 @@
   font-family: 'Lato', sans-serif;
 }
 
+body {
+  font-family: 'Merriweather', serif;
+}
+
+.App{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .priorities {
   width: 50%;   
   margin: auto;
@@ -78,9 +89,6 @@
 #dark .switch label {
   color: white;
 }
-body {
-  font-family: 'Merriweather', serif;
-}
 
 .container {
   max-width: 80%;
@@ -95,6 +103,12 @@ body {
 ul {
   list-style: none;
 }
- 
-
+.menuItem:hover{
+  color: rgb(60, 168, 71);
+}
+.loadingDiv{
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
 

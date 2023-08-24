@@ -45,19 +45,14 @@ const theme = createTheme({
             xs: 0,
             sm: 600,
             md: 900,
-            lg: 1252,
+            lg: 1285,
             xl: 1536,
         },
     },
 });
 
 const Header = (props) => {
-    const [expanded, setExpanded] = useState(false);
     const [open, setOpen] = useState(false);
-
-    const expandHeight = useCallback((bool) => {
-        setExpanded(bool);
-    }, []);
 
     const openDrawer = useCallback((bool) => {
         setOpen(true);
@@ -75,9 +70,7 @@ const Header = (props) => {
                             background: "white",
                             minHeight: {lg: "40px"},
                             fontSize: "15px",
-                        },
-                        expanded && {
-                            height: {lg: "350px"},
+                            position: "sticky",
                         },
                     ]}
                 >
@@ -89,7 +82,6 @@ const Header = (props) => {
                                     return (
                                         <NavLinks
                                             key={index}
-                                            expand={expandHeight}
                                             title={item.title}
                                             links={item.links}
                                             type={item.type}
@@ -110,7 +102,7 @@ const Header = (props) => {
                         onOpen={openDrawer}
                         onClose={closeDrawer}
                     >
-                        <Box sx={{display: "flex", justifyContent: "space-between"}}>
+                        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
                             <Box sx={{display: "flex", justifyContent: "flex-start"}}>
                                 <LanguageButton isDrawerReady={open}/>
                             </Box>
@@ -119,13 +111,13 @@ const Header = (props) => {
                             </IconButton>
                         </Box>
                         <Divider/>
-                        <Box sx={{display: "flex", flexDirection: "column"}}>
+                        <Box sx={{display: "flex", flexDirection: "column", width: "max(25vw, 250px)"}}>
                             {NavigationData.map((item, index) => {
                                 return (
                                     <>
                                         <NavLinks
+                                            closeDrawer={closeDrawer}
                                             key={index}
-                                            expand={expandHeight}
                                             title={item.title}
                                             links={item.links}
                                             type={item.type}

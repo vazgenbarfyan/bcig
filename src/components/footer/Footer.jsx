@@ -1,30 +1,19 @@
 import { Box, Container, Grid, Paper } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { FiFacebook, FiLinkedin, FiYoutube } from "react-icons/fi";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   const { t, i18n } = useTranslation();
 
   return (
-    <Box px={{ xs: 3, sm: 10 }} py={{ xs: 5, sm: 5 }}>
-      <Container
-        width="100%"
-        z-index="1"
-        justifyContent="space-around"
-        marginBottom="auto"
-        flexDirection="row"
-        textAlign="center"
-        position="fixed"
-        display="contents"
-        maxWidth="lg"
-        component={Paper}
-        elevation={5}
-      >
+    <Box p={{ xs: 1, sm: 1 }} mt={{ xs: 5, sm: 5 }} style={{boxShadow: "-8px 0 10px rgba(0,0,0,0.6)"}}>
         <Grid
           container
           justifyContent={"space-around"}
           alignItems={"center"}
-          sx={{ padding: "10px" }}
+          margin="0px"
+          sx={{ padding: "10px"}}
         >
           <Grid
             item
@@ -32,7 +21,7 @@ const Footer = () => {
             xs={12}
             md={6}
           >
-            <a href="/">
+            <NavLink to="/">
               <img
                 src="/assets/logo.png"
                 alt=""
@@ -40,22 +29,23 @@ const Footer = () => {
                 width="50"
                 height="50"
               />
-            </a>
+            </NavLink>
             <span> {t("copyright")}</span>
           </Grid>
-
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={2}>
             <Box sx={{ display: "flex", alignItems: "center", gap: "4px" }}>
               <i className="fa fa-location-dot"></i>
               <span>{t("street")}</span>
             </Box>
-            <Box sx={{ display: "flex", alignItems: "center", gap: "4px" }}>
-              <i className="fa fa-phone"></i>
-              <span>+374 10 651-631</span>
+            <Box>
+              <a href="tel:+374 10 651631" style={{color: "black", gap: "4px", display: "flex", alignItems: "center", textDecoration: "none" }}>
+                <i className="fa fa-phone"></i>
+                <span style={{color: "rgb(19, 139, 67)"}}>+374 10 651-631</span>
+              </a>
             </Box>
           </Grid>
 
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={2}>
             <Box sx={{ display: "flex", alignItems: "center", gap: "4px" }}>
               <i className="fa fa-envelope"></i>
               <span>info@cep.am antifraud@epiu.am</span>
@@ -74,26 +64,25 @@ const Footer = () => {
                 href="https://www.facebook.com/epiu.am/"
                 target="_blank"
               >
-                <FiFacebook />
+                <FiFacebook style={{ color: 'rgb(19, 139, 67)'}}/>
               </a>
               <a
                 className="icon-circle"
                 href="https://www.linkedin.com/in/epiu-state-agency-441a21155/"
                 target="_blank"
               >
-                <FiLinkedin />
+                <FiLinkedin style={{ color: 'rgb(19, 139, 67)'}}/>
               </a>
               <a
                 className="icon-circle"
                 href="https://www.youtube.com/channel/UCQ62HVkKIOiqa4GtSEn6QYw"
                 target="_blank"
               >
-                <FiYoutube />
+                <FiYoutube style={{ color: 'rgb(19, 139, 67)'}}/>
               </a>
             </div>
           </Grid>
         </Grid>
-      </Container>
     </Box>
   );
 };

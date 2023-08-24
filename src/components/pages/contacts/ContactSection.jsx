@@ -8,42 +8,6 @@ import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import { useTranslation } from "react-i18next";
 
-const ContactSectionStyle = styled.div`
-  .contactSection__wrapper {
-    display: flex;
-    gap: 5rem;
-    margin-top: 4rem;
-    justify-content: space-between;
-    position: relative;
-  }
-  .contactSection__wrapper::after {
-    position: absolute;
-    content: "";
-    width: 2px;
-    height: 50%;
-    background-color: gray;
-    left: 51%;
-    top: 30%;
-    transform: translate(-50%, -50%);
-  }
-
-  @media only screen and (max-width: 768px) {
-    .contactSection__wrapper {
-      flex-direction: column;
-    }
-    .contactSection__wrapper::after {
-      display: none;
-    }
-    .left,
-    .right {
-      max-width: 100%;
-    }
-    .right {
-      padding: 4rem 2rem 2rem 2rem;
-    }
-  }
-`;
-
 export default function ContactSection() {
   const { t, i18n } = useTranslation();
   return (
@@ -52,7 +16,9 @@ export default function ContactSection() {
         <SectionTitle />
         <div className="contactSection__wrapper">
           <div className="left">
-            <ContactInfoItem icon={<LocalPhoneIcon />} text="+374 10 651-631" />
+            <a href="tel:+374 10 651631" style={{textDecoration: "none" }}>
+              <ContactInfoItem icon={<LocalPhoneIcon />} text="+374 10 651-631" />
+            </a>
             <ContactInfoItem
               icon={<MailOutlineIcon />}
               text="info@cep.am, antifraud@epiu.am"
@@ -67,3 +33,40 @@ export default function ContactSection() {
     </ContactSectionStyle>
   );
 }
+
+const ContactSectionStyle = styled.div`
+  .contactSection__wrapper {
+    display: flex;
+    gap: 5rem;
+    margin-top: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+  .contactSection__wrapper::after {
+    position: absolute;
+    content: "";
+    width: 2px;
+    height: 80%;
+    background-color: rgb(19, 139, 67);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @media only screen and (max-width: 768px) {
+    .contactSection__wrapper {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .contactSection__wrapper::after {
+      display: none;
+    }
+    .left,
+    .right {
+      max-width: 100%;
+    }
+    .right {
+      padding: 0rem 2rem 2rem;
+    }
+  }
+`;

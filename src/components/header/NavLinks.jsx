@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import { useTranslation } from "react-i18next";
-import Link from "@mui/material/Link";
 import { Divider, Grid, List, Typography } from "@mui/material";
 import { useNavigate } from "react-router";
+import { NavLink } from "react-router-dom";
+import '../../App.css';
 
 const NavLinks = ({
-  expand,
+  closeDrawer,
   title,
   links,
   onButtonClick,
@@ -16,22 +17,26 @@ const NavLinks = ({
   const [anchorEl, setAnchorEl] = useState(false);
   const navigate = useNavigate();
   const handlePopoverOpen = (event) => {
-    if (type !== "single") expand(true);
     setAnchorEl(true);
   };
 
   const handlePopoverClose = () => {
-    if (type !== "single") expand(false);
     setAnchorEl(false);
   };
+
+  const handlePopover = () => {
+    setAnchorEl(prev => !prev);
+  }
+  
   const open = Boolean(anchorEl);
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <Grid
-      onMouseLeave={handlePopoverClose}
-      onMouseEnter={handlePopoverOpen}
+      onClick={handlePopover}
+      onMouseLeave={!isDrawerReady ? handlePopoverClose : null}
+      onMouseEnter={!isDrawerReady ? handlePopoverOpen : null}
       sx={[
         {
           display: "flex",
@@ -70,34 +75,30 @@ const NavLinks = ({
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "flex-start",
+                  textAlign: "center",
                   width: "100%",
                   color: "rgb(60, 168, 71)",
                 },
                 !isDrawerReady && {
+                  backgroundColor: "white",
+                  borderRadius: "10px",
+                  textAlign: "start",
+                  padding: "20px",
+                  boxShadow: '5px 5px 10px rgba(0, 0, 0, 0.3)',
+                  width: "max-content",
+                  gap: "10px",
                   position: "absolute",
-                  top: 25,
-                  left: 7,
-                  minWidth: "300px",
+                  top: 35,
                   color: "rgb(60, 168, 71)",
                 },
               ]}
             >
               {links?.map((item, index) => {
                 return (
-                  <Typography
-                    href={item?.href}
-                    component={Link}
-                    fontSize="0.9rem"
-                    sx={{
-                      textDecoration: "none",
-                      color: "black",
-                      ":hover": {
-                        textDecoration: "underLine",
-                        color: "rgb(60, 168, 71)",
-                      },
-                    }}
-                  >
-                    {t(item?.label)}
+                  <Typography fontSize="1rem" key={index}>
+                    <NavLink to={item?.href} onClick={closeDrawer} style={{textDecoration: "none",color: "black"}}>
+                      <span className="menuItem">{t(item?.label)}</span>
+                    </NavLink>
                   </Typography>
                 );
               })}

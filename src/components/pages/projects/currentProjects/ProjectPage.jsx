@@ -16,7 +16,7 @@ const Project = (props) => {
         gsap.set(divs[1], {x: 100, opacity: 1});
 
         gsap
-            .timeline({defaults: {duration: 3}})
+            .timeline({defaults: {duration: 0}})
             .add("three")
             .to(divs[0], {y: 0, x: 25, opacity: 1}, "three")
             .to(divs[1], {y: 0, x: 0, opacity: 0.05}, "three")
@@ -68,9 +68,9 @@ const Project = (props) => {
                 elevation={5}
                 style={{
                     padding: 15,
-                    marginTop: "10%",
                     lineHeight: "3em",
-                    background: "rgba(255, 255, 128, .5)",
+                    background: "rgb(90 254 156 / 14%)",
+                    border: "1px solid #0080007d",
                 }}
             >
                 <div className="project-info">

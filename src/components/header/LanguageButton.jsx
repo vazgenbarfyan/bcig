@@ -23,11 +23,11 @@ const LanguageButton = ({isDrawerReady, color = ""}) => {
         localStorage.setItem("lng", lng);
     };
 
-    const {t, i18n} = useTranslation();
+    const {i18n} = useTranslation();
 
     return (
         <Box
-            sx={{display: "flex", flexDirection: "row"}}
+            sx={{display: "flex", flexDirection: "row", alignItems: "center"}}
             onMouseEnter={handleOpen}
             onMouseLeave={handleClose}
         >
@@ -41,11 +41,11 @@ const LanguageButton = ({isDrawerReady, color = ""}) => {
                             overflow: "visible",
                             filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
                             display: "flex",
-                            flexDirection: "column",
                             justifyContent: "flex-start",
                             width: "100%",
                             color: "rgb(60, 168, 71)",
                             "&:before": {
+                                display: "none",
                                 content: '""',
                                 position: "absolute",
                                 top: 0,
@@ -58,12 +58,16 @@ const LanguageButton = ({isDrawerReady, color = ""}) => {
                             },
                         },
                         !isDrawerReady && {
+                            flexDirection: "column",
                             position: "absolute",
                             top: 40,
                             width: "100px",
                             right: 30,
                             color: "rgb(60, 168, 71)",
                             backgroundColor: "white",
+                            "&:before" : {
+                                display: "block",
+                            }
                         },
                     ]}
                 >
@@ -72,14 +76,15 @@ const LanguageButton = ({isDrawerReady, color = ""}) => {
                             <ListItem
                                 key={item.lang}
                                 sx={{
+                                    padding: '0 15px',
+                                    fontWeight: "bold",
                                     ":hover": {
                                         cursor: "pointer",
-                                        fontWeight: "bold",
                                     },
                                 }}
                                 onClick={() => handleChange(item.lang)}
                             >
-                                {item.label}
+                                {isDrawerReady ? item.short : item.label}
                             </ListItem>
                         );
                     })}

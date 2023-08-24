@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Container, Divider, Grid } from "@mui/material";
 
 const Accreditations = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <Container>
@@ -23,9 +23,10 @@ const Accreditations = () => {
         <div className="logo-style">
           <a
             target="_blank"
+            rel="noreferrer"
             href="https://www.greenclimate.fund/countries/armenia"
           >
-            <img src={greenClimateLogo} />
+            <img src={greenClimateLogo} alt="greenClimate" />
           </a>
         </div>
         <div
@@ -36,9 +37,10 @@ const Accreditations = () => {
         >
           <a
             target="_blank"
+            rel="noreferrer"
             href="https://www.adaptation-fund.org/ie/environmental-project-implementation-unit-epiu/"
           >
-            <img style={{ width: "100%" }} src={adaptionFundLogo} />
+            <img style={{ width: "100%" }} src={adaptionFundLogo} alt="adaptionFundLogo" />
           </a>
         </div>
 
@@ -82,7 +84,7 @@ const Accreditations = () => {
               }),
             }}
           />
-        </div>
+          </div>
       </div>
     </Container>
   );

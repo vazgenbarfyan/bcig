@@ -1,5 +1,6 @@
 .title {
-    text-decoration-line: underline;
+    color: green;
+    font-weight: bolder;
 }
 
 .image {

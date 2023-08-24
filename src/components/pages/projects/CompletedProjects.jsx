@@ -22,7 +22,7 @@ export default function CompletedProjects() {
           return (
             <Accordion
               key={projectName}
-              style={{ marginBottom: 5, padding: "12px" }}
+              style={{ marginBottom: 5, padding: "12px", border: "1px solid #0080007d", backgroundColor: "rgb(90 254 156 / 14%)" }}
             >
               <Typography style={{ margin: "10" }}>{t(projectName)}</Typography>
             </Accordion>
@@ -36,7 +36,7 @@ export default function CompletedProjects() {
       <Container>
         {projects.map((projectName) => {
           return (
-            <Accordion key={projectName}>
+            <Accordion key={projectName} style={{ border: "1px solid #0080007d", backgroundColor: "rgb(90 254 156 / 14%)" }}>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography>{t(projectName)}</Typography>
               </AccordionSummary>
