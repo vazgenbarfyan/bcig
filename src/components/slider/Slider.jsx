@@ -46,6 +46,7 @@ const Slider = () => {
           >
             <img
               src={process.env.PUBLIC_URL + `/images/photo${index + 1}.jpg`}
+              alt="slide"
             />
           </div>
         );

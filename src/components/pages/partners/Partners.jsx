@@ -4,7 +4,7 @@ import logos from "./PartnerLogos";
 import { Divider, Grid } from "@mui/material";
 
 const Partners = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const partnersInfo = [
     {

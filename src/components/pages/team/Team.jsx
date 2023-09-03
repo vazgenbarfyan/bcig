@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Team = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const classes = useStyles();
 
   const avatarStyles = {

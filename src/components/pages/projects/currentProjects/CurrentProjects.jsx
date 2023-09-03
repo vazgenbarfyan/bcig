@@ -7,7 +7,7 @@ import Paper from "@mui/material/Paper";
 import ImageList from "@mui/material/ImageList";
 
 const CurrentProjects = () => {
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
 
     return (
             <ImageList

@@ -254,6 +254,7 @@
       }
     },
     "headerTitle": "MINISTRY OF ENVIRONMENT <br/> “ENVIRONMENTAL PROJECT IMPLEMENTATION UNIT” <br/> STATE AGENCY",
-    "readMore" : "Read more"
+    "readMore" : "Read more",
+    "nothingFound" : "Unfortunately, the news was not found"
   }
 }
