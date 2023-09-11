@@ -14,7 +14,7 @@
     "currentProjects"              : "Current Projects",
     "plannedProjects"              : "Planned Projects",
     "results"                      : "Deliverables",
-    "projectStakeholders"          : "Project Stakeholders",
+    "projectStakeholders"          : "Project Beneficiaries",
     "procurements"                 : "Procurement",
     "announcements"                : "Announcements",
     "news"                         : "Newsroom",
@@ -255,6 +255,8 @@
     },
     "headerTitle": "MINISTRY OF ENVIRONMENT <br/> “ENVIRONMENTAL PROJECT IMPLEMENTATION UNIT” <br/> STATE AGENCY",
     "readMore" : "Read more",
-    "nothingFound" : "Unfortunately, the news was not found"
+    "nothingFound" : "Unfortunately, the news was not found",
+    "beneficiariesPostUpdate" : "* The list was updated on ",
+    "beneficiariesPostUpdate2" : "."
   }
 }

@@ -10,6 +10,7 @@ import NavLinks from "./NavLinks";
 import NavigationData from "./Navigation.jsx";
 import {ArrowRight} from "@mui/icons-material";
 import TopHeader from "./TopHeader";
+import { Fragment } from "react";
 
 const ElevationScroll = (props) => {
     const {children, window} = props;
@@ -51,7 +52,7 @@ const theme = createTheme({
     },
 });
 
-const Header = (props) => {
+const Header = () => {
     const [open, setOpen] = useState(false);
 
     const openDrawer = useCallback((bool) => {
@@ -81,7 +82,7 @@ const Header = (props) => {
                                 {NavigationData.map((item, index) => {
                                     return (
                                         <NavLinks
-                                            key={index}
+                                            key={index * Math.random() * 100}
                                             title={item.title}
                                             links={item.links}
                                             type={item.type}
@@ -114,17 +115,17 @@ const Header = (props) => {
                         <Box sx={{display: "flex", flexDirection: "column", width: "max(25vw, 250px)"}}>
                             {NavigationData.map((item, index) => {
                                 return (
-                                    <>
+                                    <Fragment key={index * Math.random() * 1000}>
                                         <NavLinks
                                             closeDrawer={closeDrawer}
-                                            key={index}
+                                            key={index * Math.random() * 1000}
                                             title={item.title}
                                             links={item.links}
                                             type={item.type}
                                             isDrawerReady={open}
                                         />
                                         <Divider/>
-                                    </>
+                                    </Fragment>
                                 );
                             })}
                         </Box>

@@ -1,8 +1,4 @@
-import axios from 'axios';
-
-const $host = axios.create({
-  baseURL: 'https://www.epiu.am/wp-json/wp/v2/'
-})
+import {$host} from './api';
 
 export const fetchNews = async (lang, page, per_page = 20) => {
     try {
