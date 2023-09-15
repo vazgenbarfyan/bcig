@@ -26,7 +26,7 @@ import OfficeNeeds from "./pages/OfficeNeeds";
 
 import News from "./pages/news/News";
 import SingleNews from "./pages/news/SingleNews";
-import PressAboutUs from "./pages/PressAboutUs";
+import MediaCoverage from "./pages/mediaCoverage/MediaCoverage";
 import MediaGallery from "./pages/news/MediaGallery";
 
 import Contacts from "./pages/contacts/Contacts";
@@ -69,7 +69,7 @@ const AppRouter = () => {
             <Route path="/news/">
                 <Route path="news" element={<News />} />
                 <Route path="news/:id" element={<SingleNews />} />
-                <Route path="the-press-about-us" element={<PressAboutUs />} />
+                <Route path="the-press-about-us" element={<MediaCoverage />} />
                 <Route path="media-gallery" element={<MediaGallery />} />
             </Route>
 
