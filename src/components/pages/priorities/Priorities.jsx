@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Container, Paper } from "@mui/material";
 
 const Priorities = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <Container

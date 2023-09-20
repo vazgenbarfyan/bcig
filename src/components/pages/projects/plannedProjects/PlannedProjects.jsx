@@ -7,7 +7,7 @@ import "./plannedProjects.css";
 import icons from "./PlannedProjectsIcons";
 
 const PlannedProjects = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <Container
@@ -23,7 +23,7 @@ const PlannedProjects = () => {
         <Typography variant="h6" gutterBottom>
           <div className="title">{t("titleGreenFinance")}</div>
         </Typography>
-        <img src={icons.greenFinance} className="image" />
+        <img src={icons.greenFinance} className="image" alt="finance" />
         <Typography variant="subtitle1" gutterBottom>
           {t("greenFinance")}
         </Typography>

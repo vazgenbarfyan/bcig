@@ -18,7 +18,7 @@ import CurrentProjects from "./pages/projects/currentProjects/CurrentProjects";
 import ProjectPage from "./pages/projects/currentProjects/ProjectPage";
 import PlannedProjects from "./pages/projects/plannedProjects/PlannedProjects";
 
-import Beneficiaries from "./pages/Beneficiaries";
+import Beneficiaries from "./pages/beneficiaries/Beneficiaries";
 
 import Announcements from "./pages/Announcements";
 import ProgramsProcurement from "./pages/ProgramsProcurement";

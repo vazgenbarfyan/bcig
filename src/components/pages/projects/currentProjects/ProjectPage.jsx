@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 
 const Project = (props) => {
     const {id} = useParams();
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
 
     useEffect(() => {
         const divs = document.querySelectorAll(".project-info");

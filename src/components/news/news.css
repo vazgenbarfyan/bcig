@@ -103,3 +103,9 @@ form button {
     color: #fff;
     cursor: pointer;
 }
+
+.pagination .active-page a {
+    background-color: rgb(60, 168, 71);
+    color: #fff;
+    cursor: pointer;
+}

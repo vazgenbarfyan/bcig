@@ -1,123 +1,88 @@
-import React from "react";
-import { gql, useQuery } from "@apollo/client";
-import { Container, Divider, Paper } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import './news.css';
+
+import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Box from "@mui/material/Box";
-import { BACKEND_URI } from "../../../index";
-import Typography from "@mui/material/Typography";
-import { Link } from "react-router-dom";
-import ReactLoading from "react-loading";
 
-const NEWS_QUERY = gql`
-  query GetNews($locale: I18NLocaleCode) {
-    news(locale: $locale) {
-      data {
-        id
-        attributes {
-          title
-          description
-          newsDate
-          newsId
-          createdAt
-          images {
-            data {
-              id
-              attributes {
-                url
-              }
-            }
-          }
-        }
-      }
-      meta {
-        pagination {
-          page
-          total
-        }
-      }
-    }
-  }
-`;
+import { fetchNews } from "../../../api/newsApi";
+import ReactPaginate from "react-paginate";
+
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+
 const News = () => {
-  const { t, i18n } = useTranslation();
+    const { i18n } = useTranslation();
+    
+    const [isLoading, setIsLoading] = useState(true);
+    const [newsData, setNewsData] = useState([]);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [totalCount, setTotalCount] = useState(0);
 
-  const { data, loading, error } = useQuery(NEWS_QUERY, {
-    variables: {
-      locale: i18n.language,
-    },
-  });
+    const per_page = 20;
 
-  if (loading){
+    const handlePageChange = (event) => {
+        setCurrentPage(event.selected);
+        window.scrollTo(0, 0);
+    };
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        setIsLoading(true);
+
+        fetchNews(i18n.language, currentPage+1, per_page)
+            .then((data) => {
+                setNewsData(data.data);
+                setTotalCount(data.totalCount);
+            })
+            .catch(() => console.log("turn on server"))
+            .finally(() => setIsLoading(false));
+    }, [i18n.language, currentPage]);
+
+    useEffect(() => {
+        setIsLoading(true);
+        setCurrentPage(0);
+    }, [i18n.language]);
+
     return (
-      <div className="loadingDiv">
-        <ReactLoading type="spinningBubbles" color="green" />
-      </div>
+        <>
+        {!newsData.length || isLoading  ? 
+        <section className='news-section'>
+            {Array.from(Array(20).keys()).map(() => {
+                return (
+                    <Skeleton height='40vh' />
+                )
+            })}
+        </section>
+        :
+        <section className='news-section'>
+            {newsData.map((news) => {
+                return (
+                    <NavLink to={`/news/news/${news.slug}`} key={news.id}>
+                        <div className='news-item-card' style={{backgroundImage: `url(${news._embedded["wp:featuredmedia"] ? news._embedded["wp:featuredmedia"][0].source_url : "https://phoenixtour.org/wp-content/uploads/2021/04/08-ARMENIAN-NATURE.jpg"})`}}> 
+                            <div className='news-card-content'>
+                                <h3 dangerouslySetInnerHTML={{__html: news.title.rendered}} />
+                                <p>{news.date.slice(0, 10)}</p>
+                            </div>
+                        </div>
+                    </NavLink>
+                )
+            })}
+        </section>
+        }
+        <ReactPaginate
+            nextLabel=">>"
+            previousLabel="<<"
+            breakLabel="..."
+            forcePage={currentPage}
+            pageCount={totalCount / per_page}
+            renderOnZeroPageCount={null}
+            onPageChange={handlePageChange}
+            className="pagination"
+            activeClassName="active-page"
+            previousClassName="previous-page"
+            nextClassName="next-page"
+        />
+        </>
     )
-  } 
+}
 
-  const newsData = data?.news?.data || [];
-
-  return (
-    <Container sx={{ mt: 3, mb: 3 }}>
-      {newsData.map((news) => {
-        const hasImage = Boolean(news?.attributes?.images?.data?.length);
-
-        return (
-          <Paper
-            elevation={5}
-            sx={{
-              display: "grid",
-              p: 3,
-              marginBottom: "20px",
-            }}
-          >
-            <Box
-              sx={{
-                display: "grid",
-                gridTemplateColumns: "auto 1fr",
-                gap: "15px",
-              }}
-            >
-              {hasImage ? (
-                <div>
-                  <img
-                    width="150px"
-                    height="150px"
-                    src={
-                      BACKEND_URI +
-                      news?.attributes?.images?.data[0].attributes.url
-                    }
-                    alt=""
-                  />
-                </div>
-              ) : null}
-
-              <div>
-                <Typography>{news?.attributes?.title}</Typography>
-                <Divider
-                  sx={{
-                    borderBottomWidth: "medium",
-                    borderColor: "#118C43",
-                    borderRadius: "5px",
-                  }}
-                />
-                <Typography>
-                  {news?.attributes?.description.substring(0, 400)}
-                </Typography>
-              </div>
-            </Box>
-            <Link
-              to={"/news/news/" + news?.attributes?.id}
-              sx={{ justifySelf: "right" }}
-              com
-              variant={"outlined"}
-            >
-              {t("readMore")}...
-            </Link>
-          </Paper>
-        );
-      })}
-    </Container>
-  );
-};
 export default News;

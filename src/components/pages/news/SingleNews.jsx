@@ -1,51 +1,58 @@
-import {Container, Paper} from "@mui/material";
-import React from "react";
-import CarouselImages from "./Carousel";
-import SingleNewsVideoSlider from "./SingleNewsVideoSlider";
+import React, { useState, useEffect } from "react";
+
+import { useParams } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
+import ReactLoading from "react-loading";
+import { useNavigate } from "react-router-dom";
+
+import { fetchSingleNews } from "../../../api/newsApi";
 
 const SingleNews = () => {
+    const params = useParams();
+    const { t, i18n } = useTranslation();
+
+    const navigate = useNavigate();
+
+    const [isLoading, setIsLoading] = useState(true);
+    const [singleNewsData, setSingleNewsData] = useState(null);
+
+    useEffect(() => {
+        setIsLoading(true);
+        const newLanguage = i18n.language === "hy" ? "am" : i18n.language;
+        const newSlug = params.id.slice(0, -2) + newLanguage;
+        navigate("/news/news/" + newSlug);
+
+        fetchSingleNews(i18n.language, newSlug)
+            .then((data) => setSingleNewsData(data[0]))
+            .catch(() => console.log("turn on server"))
+            .finally(() => setIsLoading(false));
+    }, [i18n.language]);
+
+    if (isLoading){
+        return (
+            <div className="loadingDiv">
+                <ReactLoading type="spinningBubbles" color="green" />
+            </div>
+        )
+    }
+
+    if (!singleNewsData){
+        return (
+            <div className="nothing">
+                <h1>{t('nothingFound')}</h1>
+            </div>
+        )
+    }
+
     return (
-        <>
-            <Container
-                component={Paper}
-                elevation={5}
-                style={{
-                    padding: 15,
-                    lineHeight: "3em",
-                }}
-            >
-                <div className="single-news">
-                    <h1 style={{color: "rgb(19, 139, 67)"}}>Lorem Ipsum</h1>
-                    <h3
-                        style={{
-                            fontWeight: "normal",
-                            padding: 15,
-                            lineHeight: "2em",
-                        }}
-                    >
-                        Contrary to popular belief, Lorem Ipsum is not simply random text.
-                        It has roots in a piece of classical Latin literature from 45 BC,
-                        making it over 2000 years old. Richard McClintock, a Latin professor
-                        at Hampden-Sydney College in Virginia, looked up one of the more
-                        obscure Latin words, consectetur, from a Lorem Ipsum passage, and
-                        going through the cites of the word in classical literature,
-                        discovered the undoubtable source. Lorem Ipsum comes from sections
-                        1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes
-                        of Good and Evil) by Cicero, written in 45 BC. This book is a
-                        treatise on the theory of ethics, very popular during the
-                        Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
-                        amet..", comes from a line in section 1.10.32. The standard chunk of
-                        Lorem Ipsum used since the 1500s is reproduced below for those
-                        interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et
-                        Malorum" by Cicero are also reproduced in their exact original form,
-                        accompanied by English versions from the 1914 translation by H.
-                        Rackham.
-                    </h3>
-                </div>
-                <CarouselImages/>
-                <SingleNewsVideoSlider />
-            </Container>
-        </>
+        <div className="singleNews" key={singleNewsData.id}>
+            <h1
+                dangerouslySetInnerHTML={{__html: singleNewsData.title.rendered}}
+            />
+            <div
+                dangerouslySetInnerHTML={{__html: singleNewsData.content.rendered}}
+            />
+        </div>
     );
 };
 

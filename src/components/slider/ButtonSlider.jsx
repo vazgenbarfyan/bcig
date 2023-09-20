@@ -14,6 +14,7 @@ const ButtonSlider = ({ direction, moveSlide }) => {
     >
       <img
         src={direction === "next" ? rightArrow : leftArrow}
+        alt="arrow"
         style={{
           width: "25px",
           height: "25px",
