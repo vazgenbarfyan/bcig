@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './mediaCoverage.css';
+import './capacityAssessment.css';
 import { useTranslation } from "react-i18next";
 import Accordion from "@mui/material/Accordion";
 import Typography from "@mui/material/Typography";
@@ -7,20 +7,21 @@ import { Container } from "@mui/system";
 import { fetchByCategory } from "../../../api/beneficiariesApi";
 import ReactLoading from "react-loading";
 import ReactPaginate from "react-paginate";
+import { NavLink } from "react-router-dom";
 
-const MediaCoverage = () => {
+const CapacityAssessment = () => {
 
   const { i18n } = useTranslation();
   const [isLoading, setIsLoading] = useState(true);
-  const [mediaData, setMediaData] = useState([]);
+  const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const per_page = 10;
 
   const categories = {
-    hy: 364,
-    en: 363,
-    ru: 365,
+    hy: 370,
+    en: 371,
+    ru: 372,
   }
   
   const handlePageChange = (event) => {
@@ -32,7 +33,7 @@ const MediaCoverage = () => {
   useEffect(() => {
     fetchByCategory(categories[i18n.language], currentPage+1, per_page)
     .then((data) => {
-      setMediaData(data.data);
+      setData(data.data);
         setTotalCount(data.totalCount);
     })
     .catch(() => console.log("turn on server"))
@@ -51,15 +52,16 @@ const MediaCoverage = () => {
             <ReactLoading type="spinningBubbles" color="green" />
           </div>
         :
-          mediaData.map((mediaItem) => {
+          data.map((item) => {
             return (
-              <Accordion key={mediaItem.id} style={{ marginBottom: 5, padding: "12px", border: "1px solid #0080007d", backgroundColor: "rgb(90 254 156 / 14%)" }}>
-                <a href={mediaItem.excerpt.rendered.replace(/<p>|<\/p>|\n/g, '')} target="_blank" rel='noreferrer' style={{color: "rgb(60, 168, 71)"}}>
+              <NavLink to={`/achievements/capacity-assessment/${item.slug}`} key={item.id} className='capacityLink'>
+                <div key={item.id} className='capacityBlock'>
                   <Typography
-                    dangerouslySetInnerHTML={{__html: mediaItem.title.rendered}}
+                    dangerouslySetInnerHTML={{__html: item.title.rendered}}
                   />
-                </a>
-              </Accordion>
+                  <span>{item.date.slice(0, 10)}</span>
+                </div>
+              </NavLink>
             );
           })
         }
@@ -82,4 +84,4 @@ const MediaCoverage = () => {
   );
 };
 
-export default MediaCoverage;
+export default CapacityAssessment;

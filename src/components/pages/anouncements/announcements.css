@@ -1,0 +1,35 @@
+.announcement{
+    padding: 20px;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+                0 0 0 2px rgb(255, 255, 255),
+                0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    display: flex;
+    gap: 2em;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.announcement:hover{
+    background: #86feb733;
+}
+.announcement h2,.readMore{
+    color: rgb(19, 139, 67);
+    font-weight: bolder;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+.annDesc,.annDate{
+    color: rgb(72, 120, 91);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    max-height: 145px;
+}
+.title{
+    text-align: center;
+}

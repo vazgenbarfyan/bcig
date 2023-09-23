@@ -1,36 +1,40 @@
 import React, { useState, useEffect } from "react";
-import './news.css';
+import './announcements.css';
 
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { fetchNews } from "../../../api/newsApi";
+import { fetchByCategory } from '../../../api/beneficiariesApi';
 import ReactPaginate from "react-paginate";
 
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-const News = () => {
+const Announcements = () => {
     const { i18n } = useTranslation();
     
     const [isLoading, setIsLoading] = useState(true);
-    const [newsData, setNewsData] = useState([]);
+    const [data, setData] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [totalCount, setTotalCount] = useState(0);
 
     const per_page = 20;
 
+    const categories = {
+      hy: 151,
+      en: 149,
+      ru: 366,
+    }
+
     const handlePageChange = (event) => {
         setCurrentPage(event.selected);
         window.scrollTo(0, 0);
+        setIsLoading(true);
     };
     useEffect(() => {
-        window.scrollTo(0, 0);
-        setIsLoading(true);
-
-        fetchNews(i18n.language, currentPage+1, per_page)
+        fetchByCategory(categories[i18n.language], currentPage+1, per_page)
             .then((data) => {
-                setNewsData(data.data);
+                setData(data.data);
                 setTotalCount(data.totalCount);
             })
             .catch(() => console.log("turn on server"))
@@ -44,30 +48,33 @@ const News = () => {
 
     return (
         <>
-        {!newsData.length || isLoading  ? 
+        {!data.length || isLoading  ? 
         <section className='news-section'>
             {Array.from(Array(20).keys()).map((i) => {
                 return (
-                    <Skeleton height='40vh' key={i * Math.random()} />
+                    <Skeleton height='60vh' key={i * Math.random()} />
                 )
             })}
         </section>
         :
         <section className='news-section'>
-            {newsData.map((news) => {
-                return (
-                    <NavLink to={`/news/news/${news.slug}`} key={news.id}>
-                        <div className='news-item-card' style={{backgroundImage: `url(${news._embedded["wp:featuredmedia"] ? news._embedded["wp:featuredmedia"][0].source_url : "https://phoenixtour.org/wp-content/uploads/2021/04/08-ARMENIAN-NATURE.jpg"})`}}> 
-                            <div className='news-card-content'>
-                                <h3 dangerouslySetInnerHTML={{__html: news.title.rendered}} />
-                                <p>{news.date.slice(0, 10)}</p>
+            {
+                data.map((post)=>{
+                    return(
+                        <NavLink to={`/procurement/announcements/${post.slug}`} key={post.id}>
+                            <div className="announcement">
+                                <h2 dangerouslySetInnerHTML={{__html: post.title.rendered}} />
+                                <p className="annDesc" dangerouslySetInnerHTML={{__html: post.content.rendered}} />
+                                <span className='readMore'>READ MORE »</span>
+                                <p className="annDate">{post.date.slice(0, 10)}</p>
                             </div>
-                        </div>
-                    </NavLink>
-                )
-            })}
+                        </NavLink>
+                    )
+                })
+            }
         </section>
         }
+        {totalCount <= 20 ? '' : 
         <ReactPaginate
             nextLabel=">>"
             previousLabel="<<"
@@ -81,8 +88,9 @@ const News = () => {
             previousClassName="previous-page"
             nextClassName="next-page"
         />
+        }
         </>
     )
 }
 
-export default News;
+export default Announcements;

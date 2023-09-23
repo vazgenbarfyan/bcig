@@ -1,0 +1,19 @@
+.capacityBlock{
+    margin-bottom: 5px;
+    padding: 12px; 
+    border: 1px solid #0080007d;
+    background-color: rgb(90 254 156 / 14%);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: rgb(60, 168, 71);
+}
+.capacityBlock p{
+    text-decoration: underline;
+}
+.capacityBlock span{
+    width: 10em;
+}
+.capacityLink{
+    text-decoration: none;
+}
