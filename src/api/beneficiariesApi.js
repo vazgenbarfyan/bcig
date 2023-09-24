@@ -1,9 +1,10 @@
 import {$host} from './api';
 
-export const fetchByCategory = async (categories, page, per_page = 20) => {
+export const fetchByCategory = async (categories, page, per_page = 20,isEmbed) => {
     try {
         const response = await $host.get('posts', {
             params: {
+                _embed:isEmbed,
                 categories,
                 page,
                 per_page,
@@ -18,3 +19,13 @@ export const fetchByCategory = async (categories, page, per_page = 20) => {
         return { totalCount: 0, data: [] };
     }
 }
+
+export const fetchSingleData = async (categories, slug) => {
+    const { data } = await $host.get('posts', {
+      params: {
+        categories,
+        slug
+      }
+    });
+    return data;
+  }

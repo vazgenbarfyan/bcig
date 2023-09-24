@@ -11,7 +11,7 @@ import Team from "./pages/team/Team";
 import Partners from "./pages/partners/Partners";
 
 import Accreditations from "./pages/ourAchievements/Accreditations";
-import CapacityAssessment from "./pages/CapacityAssessment";
+import CapacityAssessment from "./pages/capacityAssessment/CapacityAssessment";
 
 import CompletedProjects from "./pages/projects/CompletedProjects";
 import CurrentProjects from "./pages/projects/currentProjects/CurrentProjects";
@@ -20,16 +20,19 @@ import PlannedProjects from "./pages/projects/plannedProjects/PlannedProjects";
 
 import Beneficiaries from "./pages/beneficiaries/Beneficiaries";
 
-import Announcements from "./pages/Announcements";
+import Announcements from "./pages/anouncements/Announcements";
+import Announcement from "./pages/anouncements/Announcement";
 import ProgramsProcurement from "./pages/ProgramsProcurement";
 import OfficeNeeds from "./pages/OfficeNeeds";
 
 import News from "./pages/news/News";
 import SingleNews from "./pages/news/SingleNews";
 import MediaCoverage from "./pages/mediaCoverage/MediaCoverage";
-import MediaGallery from "./pages/news/MediaGallery";
+import MediaGallery from "./pages/mediaGallery/MediaGallery";
 
 import Contacts from "./pages/contacts/Contacts";
+import MediaGalleryInside from './pages/mediaGallery/MediaGalleryInside';
+import CapacityAssessmentInside from './pages/capacityAssessment/CapacityAssessmentInside';
 
 const AppRouter = () => {
     return (
@@ -49,6 +52,7 @@ const AppRouter = () => {
             <Route path="/achievements/">
                 <Route path="accreditations" element={<Accreditations />} />
                 <Route path="capacity-assessment" element={<CapacityAssessment />} />
+                <Route path="capacity-assessment/:assessment" element={<CapacityAssessmentInside />} />
             </Route>
 
             <Route path="/projects/">
@@ -64,13 +68,15 @@ const AppRouter = () => {
                 <Route path="procurement-under-the-programs" element={<ProgramsProcurement />} />
                 <Route path="procurement-for-the-office-needs" element={<OfficeNeeds />} />
                 <Route path="announcements" element={<Announcements />} />
+                <Route path="announcements/:announcement" element={<Announcement />} />
             </Route>
-
+            
             <Route path="/news/">
                 <Route path="news" element={<News />} />
                 <Route path="news/:id" element={<SingleNews />} />
                 <Route path="the-press-about-us" element={<MediaCoverage />} />
                 <Route path="media-gallery" element={<MediaGallery />} />
+                <Route path="media-gallery/:media" element={<MediaGalleryInside />} />
             </Route>
 
             <Route path="/contacts" element={<Contacts />} />

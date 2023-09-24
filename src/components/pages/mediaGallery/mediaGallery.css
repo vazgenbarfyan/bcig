@@ -1,0 +1,51 @@
+.mediaGallery{
+    padding: 20px;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+                0 0 0 2px rgb(255, 255, 255),
+                0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    display: flex;
+    gap: 2em;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.mediaGallery:hover{
+    background: #86feb733;
+}
+.mediaGallery h2{
+    color: rgb(19, 139, 67);
+    font-weight: bolder;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+.mediaDesc,.mediaDate{
+    color: rgb(72, 120, 91);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    max-height: 145px;
+}
+.mediaDesc figure{
+    display: none;
+}
+.wp-block-embed__wrapper iframe, .wp-block-video video{
+    width: 100%;
+    height: 70vh;
+}
+.wp-block-image{
+    text-align: center;
+}
+.title{
+    text-align: center;
+}
+.mediaPicture{
+    width: 100%;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
