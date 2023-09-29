@@ -9,8 +9,8 @@ import Typography from "@mui/material/Typography";
 
 const Project = (props) => {
     const {id} = useParams();
-    const {t} = useTranslation();
-
+    const {t, i18n} = useTranslation();
+    
     useEffect(() => {
         const divs = document.querySelectorAll(".project-info");
         gsap.set(divs[1], {x: 100, opacity: 1});
@@ -109,6 +109,7 @@ const Project = (props) => {
                     />
                     <h3 className='infoLabel'>{t("projectDocuments")}</h3>
                     <h4 className='infoValue'>{t("projectDocumentsDescription")}</h4>
+                    {data.file ? <a href = {data.file[i18n.language]} target = "_blank" rel="noreferrer">{t(`allCurrentProject.${data.key}.fileTitle`)}</a> : ''}
                 </div>
             </Container>
         </>

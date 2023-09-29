@@ -52,6 +52,9 @@ const ContactSectionStyle = styled.div`
     left: 50%;
     transform: translateX(-50%);
   }
+  .left{
+    max-width: 25em;
+  }
 
   @media only screen and (max-width: 768px) {
     .contactSection__wrapper {

@@ -241,7 +241,6 @@ const getData = (t) => [
         img: images.NarineGigolyan,
       },
       {
-        name: <b>{t("member6")}</b>,
         position: t("member6Position"),
         img: images.KhanumAbrahamyan,
       },
@@ -331,18 +330,18 @@ const getData = (t) => [
         img: images.JannaDadiyan,
       },
       {
-        name: <b>{t("teamName4Member3")}</b>,
-        position: t("teamName4Member2Position"),
-        img: images.IrmaYuzbashyan,
-      },
-      {
         name: <b>{t("teamName4Member4")}</b>,
-        position: t("teamName4Member3Position"),
+        position: t("teamName4Member4Position"),
         img: images.HovhannesKarakhanyan,
       },
       {
-        name: <b>{t("teamName4Member5")}</b>,
+        name: <b>{t("teamName4Member3")}</b>,
         position: t("teamName4Member3Position"),
+        img: images.IrmaYuzbashyan,
+      },
+      {
+        name: <b>{t("teamName4Member5")}</b>,
+        position: t("teamName4Member5Position"),
         img: images.ArsenHayrapetyan,
       },
     ],
@@ -351,20 +350,12 @@ const getData = (t) => [
     label: <b>{t("experts")}</b>,
     members: [
       {
-        name: <b>{t("expert1")}</b>,
-        img: images.AlbertArutunian,
-      },
-      {
         name: <b>{t("expert2")}</b>,
         img: images.SonaHakobian,
       },
       {
         name: <b>{t("expert3")}</b>,
         img: images.LianaNersisyan,
-      },
-      {
-        name: <b>{t("expert4")}</b>,
-        img: images.NinaAvagyan,
       },
       {
         name: <b>{t("expert5")}</b>,

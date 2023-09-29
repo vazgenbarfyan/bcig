@@ -11,7 +11,7 @@ export default function CompletedProjects() {
   const { t, i18n } = useTranslation();
 
   const projects = Array.from(
-    { length: 30 },
+    { length: 31 },
     (_, i) => `implemented-project-${i + 1}`
   );
 

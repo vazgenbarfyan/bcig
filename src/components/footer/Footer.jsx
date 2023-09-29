@@ -48,7 +48,7 @@ const Footer = () => {
           <Grid item xs={12} md={2}>
             <Box sx={{ display: "flex", alignItems: "center", gap: "4px" }}>
               <i className="fa fa-envelope"></i>
-              <span>info@cep.am antifraud@epiu.am</span>
+              <span>info@cep.am</span>
             </Box>
             <div
               className="social-media"
