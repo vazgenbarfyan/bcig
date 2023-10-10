@@ -9,6 +9,7 @@ import ReactPaginate from "react-paginate";
 
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import defImage from './newsDefImg.jpeg';
 
 const News = () => {
     const { i18n } = useTranslation();
@@ -57,7 +58,7 @@ const News = () => {
             {newsData.map((news) => {
                 return (
                     <NavLink to={`/news/news/${news.slug}`} key={news.id}>
-                        <div className='news-item-card' style={{backgroundImage: `url(${news._embedded["wp:featuredmedia"] ? news._embedded["wp:featuredmedia"][0].source_url : "https://phoenixtour.org/wp-content/uploads/2021/04/08-ARMENIAN-NATURE.jpg"})`}}> 
+                        <div className='news-item-card' style={{backgroundImage: `url(${news._embedded["wp:featuredmedia"] ? news._embedded["wp:featuredmedia"][0].source_url : defImage})`}}> 
                             <div className='news-card-content'>
                                 <h3 dangerouslySetInnerHTML={{__html: news.title.rendered}} />
                                 <p>{news.date.slice(0, 10)}</p>

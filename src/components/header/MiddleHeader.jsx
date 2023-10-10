@@ -38,20 +38,24 @@ export default function ProminentAppBar() {
             }}
         >
             <FlagWrapper>
-                <img src="/assets/gerb.png" alt="" title=""/>
+                <a href=" http://www.mnp.am/">
+                    <img src="/assets/gerb.png" alt="" title=""/>
+                </a>
             </FlagWrapper>
             <div>
-                <div className="header-title" style={{color: " black"}}>
-                    <Typography variant={'h6'} sx={{
-                        fontSize: "16px",
-                        textAlign: "center",
-                        fontWeight: 700
-                    }} dangerouslySetInnerHTML={{
-                        __html: t("headerTitle", {
-                            interpolation: {escapeValue: false},
-                        }),
-                    }}/>
-                </div>
+                <NavLink to="/" style={{textDecoration: 'none'}}>
+                    <div className="header-title" style={{color: " black"}}>
+                        <Typography variant={'h6'} sx={{
+                            fontSize: "16px",
+                            textAlign: "center",
+                            fontWeight: 700
+                        }} dangerouslySetInnerHTML={{
+                            __html: t("headerTitle", {
+                                interpolation: {escapeValue: false},
+                            }),
+                        }}/>
+                    </div>
+                </NavLink>
             </div>
             <div>
                 <NavLink to="/">
