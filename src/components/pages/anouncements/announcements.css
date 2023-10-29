@@ -9,6 +9,7 @@
     justify-content: space-between;
     cursor: pointer;
     height: 100%;
+    
 }
 .announcement:hover{
     background: #86feb733;
