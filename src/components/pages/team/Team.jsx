@@ -149,9 +149,9 @@ const Team = () => {
         </Stack>
       </div>
       <div>
-        {getData(t).map((departmentInfo) => {
+        {getData(t).map((departmentInfo, index) => {
           return (
-            <Accordion>
+            <Accordion key={index}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
@@ -167,9 +167,9 @@ const Team = () => {
                   gap: "20px",
                 }}
               >
-                {departmentInfo?.members.map((memberInfo) => {
+                {departmentInfo?.members.map((memberInfo, index) => {
                   return (
-                    <div
+                    <div key={index}
                       style={{
                         display: "flex",
                         flexDirection: "column",
@@ -241,6 +241,7 @@ const getData = (t) => [
         img: images.NarineGigolyan,
       },
       {
+        name: <b style={{color: 'transparent'}}>.</b>,
         position: t("member6Position"),
         img: images.KhanumAbrahamyan,
       },
@@ -329,11 +330,11 @@ const getData = (t) => [
         position: t("teamName4Member1Position"),
         img: images.JannaDadiyan,
       },
-      {
-        name: <b>{t("teamName4Member4")}</b>,
-        position: t("teamName4Member4Position"),
-        img: images.HovhannesKarakhanyan,
-      },
+      // {
+      //   name: <b>{t("teamName4Member4")}</b>,
+      //   position: t("teamName4Member4Position"),
+      //   img: images.HovhannesKarakhanyan,
+      // },
       {
         name: <b>{t("teamName4Member3")}</b>,
         position: t("teamName4Member3Position"),
