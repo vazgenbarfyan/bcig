@@ -52,9 +52,8 @@ body {
   display: block;
 }
 
-.abilities {
-  /* margin: auto; */
-  /* max-width: 50%;  */
+.abilities ol{
+  padding-left: 16px;
 }
 
 .abilities-images {

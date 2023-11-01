@@ -21,7 +21,7 @@ export default function ContactSection() {
             </a>
             <ContactInfoItem
               icon={<MailOutlineIcon />}
-              text="info@cep.am, antifraud@epiu.am"
+              text="info@cep.am"
             />
             <ContactInfoItem icon={<LocationOnIcon />} text={t("street")} />
           </div>
